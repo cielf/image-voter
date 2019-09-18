@@ -1,0 +1,26 @@
+{%load static %}
+
+
+<div class="row">
+  <div class="{{image_1_portrait_or_landscape}}">
+       <h1>{{image_1_name_for_display}}</h1>
+    <img src="{% static image_1_image_filename  %}" alt="My image" style="width:40%">
+  </div>
+  <div class={{image_2_portrait_or_landscape}}">
+       <h1>{{image_2_name_for_display}}</h1>
+    <img src="{% static image_2_image_filename  %}" alt="My image" style="width:40%">
+  </div>
+</div>
+
+<form action="{% url 'vote'  %}" method="post">
+{% csrf_token %}
+
+    <input type="radio" name="choice" id="image_{{ image_1_id }}" value="{{ image_1_id }}">
+    <label> {{ image_1_name_for_display }} </label><br>
+
+     <input type="radio" name="choice" id="image_{{ image_2_id }}" value="{{ image_2_id }}">
+     <label> {{ image_2_name_for_display }} </label><br>
+
+
+<input type="submit" value="Vote">
+</form>
